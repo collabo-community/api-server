@@ -1,12 +1,11 @@
 {
-  "name": "@collabo-community/collabocate",
+  "name": "@collabo-community/api-server",
   "version": "0.0.0",
-  "description": "Collabocate is a set of integration apps to help non-technical and technical contributors/users alike, to participate in open source project development and get carried along",
-  "main": "api-server/server.ts",
+  "description": "Backend API server for the Collabo Community App and any other apps or libraries built at Collabo Community",
+  "main": "@server/server.ts",
   "scripts": {
-    "dev:client": "nodemon -r esm @dev-client/server.js",
-    "dev:api:atlas": "nodemon --exec ts-node @api-server/server.ts",
-    "dev:api:local": "nodemon --exec ts-node @api-server/server.ts",
+    "dev:api:atlas": "nodemon --exec ts-node @server/server.ts",
+    "dev:api:local": "nodemon --exec ts-node @server/server.ts",
     "lint": "esw --ext .ts --color",
     "lint:watch": "npm run lint -- --watch"
   },
@@ -50,19 +49,20 @@
     "eslint-watch": "^8.0.0",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"
   },
-  "homepage": "https://github.com/collabo-community/collabocate#readme",
+  "homepage": "https://github.com/collabo-community/api-server#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/collabo-community/collabocate.git"
+    "url": "git+https://github.com/collabo-community/api-server.git"
   },
   "bugs": {
     "url": "https://github.com/collabo-community/issue-tickets-ready-for-fixing/issues"
   },
-  "author": "Collabo Community [Code Collabo]",
+  "author": "Collabo Community",
   "license": "AGPL v3.0",
   "contributors": [
-    "Find list of contributors in project README: https://github.com/collabo-community/collabocate?tab=readme-ov-file#contributors"
+    "Find list of contributors in project README: https://github.com/collabo-community/api-server?tab=readme-ov-file#contributors"
   ]
 }
