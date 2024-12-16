@@ -11,6 +11,10 @@ export const createGithubSyncService = async (requestBody: GithubSyncDocument): 
     if (requestBody.githubsync_instance_name) {
       badRequestErr('global setting does not require <githubsync_instance_name> property');
     }
+  } else {
+    if (!requestBody.githubsync_instance_name) {
+      badRequestErr('<githubsync_instance_name> property is required for non global settings');
+    }
   }
 
   const createGithubSync = new GithubSync({
@@ -47,7 +51,7 @@ export const deleteOneGithubSyncService = async (paramsId: string) => {
 }
 
 export const updateOneGithubSyncService = async (paramsId: string, requestBody: GithubSyncDocument) => {
-  const query = await GithubSync.findById(paramsId).exec();
+  let query = await GithubSync.findById(paramsId).exec();
   if(!query){
     notFoundErr('No record found for provided ID');
   }
@@ -57,6 +61,8 @@ export const updateOneGithubSyncService = async (paramsId: string, requestBody: 
   if (query.global === true && requestBody.githubsync_instance_name) {
     badRequestErr('global setting does not require app_name property');
   }
-  const updatedQuery = await GithubSync.findOneAndUpdate({ _id: paramsId }, requestBody, { new: true }) // PATCH UPDATE
+
+  query.set({ ...query, ...requestBody });
+  const updatedQuery = await query.save();
   return updatedQuery;
 };
