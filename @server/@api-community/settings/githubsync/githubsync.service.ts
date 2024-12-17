@@ -8,18 +8,18 @@ export const createGithubSyncService = async (requestBody: GithubSyncDocument): 
     if(query){
       badRequestErr('A global setting already exists, Only One Global Setting can exist');
     }
-    if (requestBody.githubsync_instance_name) {
-      badRequestErr('global setting does not require <githubsync_instance_name> property');
+    if (requestBody.instance_name) {
+      badRequestErr('global setting does not require <instance_name> property');
     }
   } else {
-    if (!requestBody.githubsync_instance_name) {
-      badRequestErr('<githubsync_instance_name> property is required for non global settings');
+    if (!requestBody.instance_name) {
+      badRequestErr('<instance_name> property is required for non global settings');
     }
   }
 
   const createGithubSync = new GithubSync({
     global: requestBody.global,
-    githubsync_instance_name: requestBody.githubsync_instance_name,
+    instance_name: requestBody.instance_name,
     github: {
       user_name: requestBody.github.user_name,
       repo_name: requestBody.github.repo_name
@@ -51,14 +51,14 @@ export const deleteOneGithubSyncService = async (paramsId: string) => {
 }
 
 export const updateOneGithubSyncService = async (paramsId: string, requestBody: GithubSyncDocument) => {
-  let query = await GithubSync.findById(paramsId).exec();
+  const query = await GithubSync.findById(paramsId).exec();
   if(!query){
     notFoundErr('No record found for provided ID');
   }
   if (Object.keys(requestBody).includes("global")) {
     badRequestErr('the global property update not allowed');
   }
-  if (query.global === true && requestBody.githubsync_instance_name) {
+  if (query.global === true && requestBody.instance_name) {
     badRequestErr('global setting does not require app_name property');
   }
 

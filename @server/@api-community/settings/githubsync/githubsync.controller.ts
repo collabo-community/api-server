@@ -23,7 +23,7 @@ export const createGithubSyncController = async (req: Request, res: Response, ne
       data: {
         _id: doc._id,
         global: doc.global,
-        githubsync_instance_name: doc.githubsync_instance_name,
+        instance_name: doc.instance_name,
         github: {
           user_name: doc.github.user_name,
           repo_name: doc.github.repo_name
@@ -49,7 +49,7 @@ export const getGithubSyncController = async (req: Request, res: Response, next:
         return {
           _id: doc._id,
           global: doc.global,
-          githubsync_instance_name: doc.githubsync_instance_name,
+          instance_name: doc.instance_name,
           github: {
             user_name: doc.github.user_name,
             repo_name: doc.github.repo_name
@@ -75,7 +75,7 @@ export const getOneGithubSyncController = async (req: Request, res: Response, ne
       data: {
         _id: doc._id,
         global: doc.global,
-        githubsync_instance_name: doc.githubsync_instance_name,
+        instance_name: doc.instance_name,
         github: {
           user_name: doc.github.user_name,
           repo_name: doc.github.repo_name
@@ -114,7 +114,7 @@ export const updateOneGithubSyncController = async (req: Request, res: Response,
       data: {
         _id: doc._id,
         global: doc.global,
-        githubsync_instance_name: doc.githubsync_instance_name,
+        instance_name: doc.instance_name,
         github: {
           user_name: doc.github.user_name,
           repo_name: doc.github.repo_name
