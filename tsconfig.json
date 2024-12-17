@@ -35,6 +35,7 @@
     //------------------------------
     "baseUrl": "./", // This must be specified if "paths" is.
     "paths": {
+        "@githubsync/*": ["@server/@api-community/settings/githubsync/*"],
         "@user/*": ["@server/@api-community/user/*"],
         "@auth/*": ["@server/@api-community/auth/*"],
         "@api-community/*": ["@server/@api-community/*"],

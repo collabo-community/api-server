@@ -11,6 +11,7 @@ import { router as appRouter } from '@api-community/app.route';
 import { router as githubRouter } from '@api-github/github.route';
 import { router as authRouter } from '@auth/auth.route';
 import { router as userRouter } from '@user/user.route';
+import { router as githubsyncRouter } from '@githubsync/githubsync.route';
 import { configurePassport } from '@auth/passport/passport.auth.config';
 
 const dotEnv = dotenv.config();
@@ -31,6 +32,7 @@ app.use('/', appRouter);
 app.use('/github', githubRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+app.use('/githubsync', githubsyncRouter)
 //==========================
 
 
